@@ -10,6 +10,8 @@ import pandas as pd
 from zipfile import ZipFile
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
     
 from . import download_liar_dataset
 
@@ -67,7 +69,18 @@ def main() -> Status:
         X_valid = tf_idf.transform(valid_df["statement"])
         y_valid = le.transform(valid_df["label"])
         
-        #...
+        model = LogisticRegression()
+        model.fit(X_train, y_train)
+        
+        y_train_pred = model.predict(X_train)
+        train_score = accuracy_score(y_train, y_train_pred)
+        print(f"Train score: {train_score*100:.1f}%")
+        y_test_pred = model.predict(X_test)
+        test_score = accuracy_score(y_test, y_test_pred)
+        print(f"Test score: {test_score*100:.1f}%")
+        y_valid_pred = model.predict(X_valid)
+        valid_score = accuracy_score(y_valid, y_valid_pred)
+        print(f"Validation score: {valid_score*100:.1f}%")
         
         return Status.OK
     except:
