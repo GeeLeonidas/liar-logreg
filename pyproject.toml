@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2024 Guilherme Leoi
+#
+# SPDX-License-Identifier: Apache-2.0
+
+[tool.poetry]
+name = "liar-logreg"
+version = "0.1.0"
+description = "Logistic Regression of the LIAR dataset with TF-IDF vectorization"
+authors = ["Guilherme Leoi <geeleonidas@pm.me>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+pandas = "^2.2.3"
+scikit-learn = "^1.5.2"
+
+[tool.poetry.scripts]
+liar-logreg = "liar-logreg.__main__:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

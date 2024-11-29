@@ -1,0 +1,6 @@
+# SPDX-FileCopyrightText: 2024 Guilherme Leoi
+#
+# SPDX-License-Identifier: Apache-2.0
+
+pandas>=2.2.3,==2.2.*
+scikit-learn>=1.5.2,==1.5.*
