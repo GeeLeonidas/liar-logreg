@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 [tool.poetry]
-name = "liar-logreg"
+name = "liar_logreg"
 version = "0.1.0"
 description = "Logistic Regression of the LIAR dataset with TF-IDF vectorization"
 authors = ["Guilherme Leoi <geeleonidas@pm.me>"]
@@ -16,7 +16,7 @@ pandas = "^2.2.3"
 scikit-learn = "^1.5.2"
 
 [tool.poetry.scripts]
-liar-logreg = "liar-logreg.__main__:main"
+liar-logreg = "liar_logreg.__main__:main"
 
 [build-system]
 requires = ["poetry-core"]
