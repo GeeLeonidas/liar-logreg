@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import traceback
+from enum import IntEnum
 
 import os
 import pandas as pd
@@ -11,11 +12,12 @@ from zipfile import ZipFile
 from . import download_liar_dataset
 
 
-CODE_OK = 0
-CODE_ERROR = 1
+class Status(IntEnum):
+    OK = 0
+    ERROR = 1
 
 
-def main() -> int:
+def main() -> Status:
     try:
         if not os.path.isfile("./liar_dataset.zip"):
             download_liar_dataset()
@@ -28,10 +30,10 @@ def main() -> int:
         }
         #...
         
-        return CODE_OK
+        return Status.OK
     except:
         traceback.print_exc()
-        return CODE_ERROR
+        return Status.ERROR
 
 
 if __name__ == "__main__":
