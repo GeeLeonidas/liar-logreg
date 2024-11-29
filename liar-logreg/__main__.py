@@ -2,9 +2,19 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-def main():
-    pass
+CODE_OK = 0
+CODE_ERROR = 1
+
+
+def main() -> int:
+    try:
+        #...
+        
+        return CODE_OK
+    except:
+        return CODE_ERROR
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    sys.exit(main())
