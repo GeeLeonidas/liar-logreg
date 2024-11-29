@@ -12,8 +12,10 @@ https://paperswithcode.com/dataset/liar
 
 Requer-se Python 3.9 ou superior
 
-Utilizando pip:
+Utilizando venv e pip:
 ```
+<executável do python> -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
