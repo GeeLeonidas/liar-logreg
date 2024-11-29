@@ -22,9 +22,25 @@ def main() -> Status:
         if not os.path.isfile("./liar_dataset.zip"):
             download_liar_dataset()
         zipped_dataset = ZipFile("./liar_dataset.zip")
+        liar_column_names = [
+            "statement id",
+            "label",
+            "statement",
+            "subject",
+            "speaker",
+            "job title",
+            "state info",
+            "affiliation",
+            "barely true count",
+            "false count",
+            "half true count",
+            "mostly true count",
+            "pants on fire count",
+            "context"
+        ]
         dataset = {
             zipped_file.filename:
-                pd.read_csv(zipped_dataset.open(zipped_file.filename), sep='\t')
+                pd.read_csv(zipped_dataset.open(zipped_file.filename), names=liar_column_names, sep='\t')
             for zipped_file in zipped_dataset.infolist()
             if zipped_file.filename.endswith(".tsv")
         }
