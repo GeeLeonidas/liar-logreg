@@ -11,7 +11,7 @@ from zipfile import ZipFile
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix
     
 from . import download_liar_dataset
 
@@ -81,6 +81,15 @@ def main() -> Status:
         y_valid_pred = model.predict(X_valid)
         valid_score = accuracy_score(y_valid, y_valid_pred)
         print(f"Validation score: {valid_score*100:.1f}%")
+        
+        labels = le.inverse_transform(list(range(6)))
+        conf_matrix = pd.DataFrame(confusion_matrix(y_test, y_test_pred), columns=labels, index=labels)
+        print(conf_matrix)
+        
+        for label in labels:
+            one = conf_matrix[label][label]
+            rest = sum(conf_matrix[label][conf_matrix[label].index != label])
+            print(f"'{label}' score: {100*one/rest:.1f}%")
         
         return Status.OK
     except:
