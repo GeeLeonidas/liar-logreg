@@ -7,11 +7,13 @@ from enum import IntEnum
 
 import os
 import pandas as pd
+import matplotlib
+import matplotlib.pyplot as plt
 from zipfile import ZipFile
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
     
 from . import download_liar_dataset
 
@@ -90,7 +92,12 @@ def main() -> Status:
             correct = conf_matrix[label][label]
             predicted = sum(conf_matrix[label])
             print(f"'{label}' score: {100*correct/predicted:.1f}%")
-        
+
+        ConfusionMatrixDisplay.from_predictions(y_test, y_test_pred,
+            display_labels=labels, xticks_rotation='vertical', normalize='true')
+        plt.tight_layout()
+        plt.savefig("./conf_matrix.png")
+
         return Status.OK
     except:
         traceback.print_exc()

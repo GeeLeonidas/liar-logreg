@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 liar_dataset.zip
+conf_matrix.png
 
 liar_logreg/__pycache__
 
