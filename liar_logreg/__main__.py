@@ -87,9 +87,9 @@ def main() -> Status:
         print(conf_matrix)
         
         for label in labels:
-            one = conf_matrix[label][label]
-            rest = sum(conf_matrix[label][conf_matrix[label].index != label])
-            print(f"'{label}' score: {100*one/rest:.1f}%")
+            correct = conf_matrix[label][label]
+            predicted = sum(conf_matrix[label])
+            print(f"'{label}' score: {100*correct/predicted:.1f}%")
         
         return Status.OK
     except:
