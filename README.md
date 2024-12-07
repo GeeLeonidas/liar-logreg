@@ -10,7 +10,7 @@ https://paperswithcode.com/dataset/liar
 
 ## Instalação
 
-Requer-se Python 3.9 ou superior
+Requer-se Python >=3.9.* e <=3.12.*
 
 Utilizando venv e pip:
 ```
