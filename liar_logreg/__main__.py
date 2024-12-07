@@ -91,10 +91,10 @@ def main() -> Status:
         for label in labels:
             correct = conf_matrix[label][label]
             predicted = sum(conf_matrix[label])
-            print(f"'{label}' score: {100*correct/predicted:.1f}%")
+            print(f"'{label}' precision: {100*correct/predicted:.1f}%")
 
         ConfusionMatrixDisplay.from_predictions(y_test, y_test_pred,
-            display_labels=labels, xticks_rotation='vertical', normalize='true')
+            display_labels=labels, xticks_rotation='vertical')
         plt.tight_layout()
         plt.savefig("./conf_matrix.png")
 
