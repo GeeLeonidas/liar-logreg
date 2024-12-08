@@ -55,6 +55,10 @@ def main() -> Status:
         test_df = dataset["test.tsv"]
         valid_df = dataset["valid.tsv"]
                 
+        # References:
+        # https://www.geeksforgeeks.org/text-classification-using-logistic-regression/
+        # https://scikit-learn.org/1.5/index.html
+        
         tf_idf = TfidfVectorizer() \
             .fit(train_df["statement"]) \
             .fit(test_df["statement"]) \
